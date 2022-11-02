@@ -1,0 +1,13 @@
+{
+    "python.analysis.typeCheckingMode": "basic",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "db",
+            "database": "${workspaceFolder:CodeCobra bot}/giveaways.db",
+            "group": "idk"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
