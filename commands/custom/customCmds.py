@@ -18,29 +18,29 @@ class CustomCommands(commands.Cog):
 
         view = discord.ui.View()
         for query in YT_QUERIES:
-            if -1 not in [message.content.find(squery) for squery in query]:
+            if -1 not in [message.content.lower().find(squery) for squery in query]:
                 view.add_item(discord.ui.Button(label="Click here!", style=discord.ButtonStyle.blurple, url="https://www.youtube.com/channel/UCP9wWgR7M82vClGwEsaFjWA"))
                 await message.channel.send("Are you looking for the server's youtube channel? If you are:", view=view)
                 return
 
         for query in MEMBER_COUNT_QUERIES:
-            if -1 not in [message.content.find(squery) for squery in query]:
+            if -1 not in [message.content.lower().find(squery) for squery in query]:
                 if message.guild != None and message.guild.member_count != None:
                     await message.channel.send(f"If you're curious, the server has **{message.guild.member_count}** {'member' if message.guild.member_count <= 1 else 'members'}'")
                 return
 
         for query in OWNER_QUERIES:
-            if -1 not in [message.content.find(squery) for squery in query]:
+            if -1 not in [message.content.lower().find(squery) for squery in query]:
                 await message.channel.send("The current server owner is <@817434098829230110>.")
                 return
 
         for query in FOUNDER_QUERIES:
-            if -1 not in [message.content.find(squery) for squery in query]:
+            if -1 not in [message.content.lower().find(squery) for squery in query]:
                 await message.channel.send("The current server founder (he gave his owner status away as he is not active anymore) is <@752446932571521075>.")
                 return
 
         for query in BOT_CREATOR_QUERIES:
-            if -1 not in [message.content.find(squery) for squery in query]:
+            if -1 not in [message.content.lower().find(squery) for squery in query]:
                 await message.channel.send("The person who made this bot is <@457211156621295616>!")
                 return
 
