@@ -1,9 +1,9 @@
 #!/bin/bash
-ACTION='\033[1;90m'
-FINISHED='\033[1;96m'
-READY='\033[1;92m'
-NOCOLOR='\033[0m' # No Color
-ERROR='\033[0;31m'
+ACTION='\033[1;90m  '
+FINISHED='\033[1;96m  '
+READY='\033[1;92m  '
+NOCOLOR='\033[0m  ' # No Color
+ERROR='\033[0;31m  '
 
 echo
 echo -e Checking Git repo
@@ -31,6 +31,20 @@ fi
 echo -e ${ACTION} "Installing and updating packages..."
 pip3 -q install -r requirements.txt
 
-echo -e ${FINISHED} "Everything is updated." ${READY} "Ready to run!"
+echo -e ${ACTION} "Checking if .env exists..."
+if [ ! -e .env ]
+then
+  echo -e ${ERROR} # transition to error mode
+  read -p " .env doesn't exist! Do you want to create it? (Y/N) " var
+  if [ ${var,,} == "y" ]
+  then
+    echo -e ${ACTION} "Creating template .env file..."
+    echo -e "#Put your token bruh...\nDISCORD_TOKEN=put your token here" > .env
+    nano .env 2>/dev/null
+    echo -e ${ACTION} "Token added to environemnt config."
+  fi
+fi
+
+echo -e ${FINISHED} "Everything is updated.\n"${READY} "Ready to run! Running..."
 
 python main.py
