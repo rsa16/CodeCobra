@@ -29,7 +29,7 @@ then
 fi
  
 echo -e ${ACTION} "Installing and updating packages..."
-pip3 -q install -r requirements.txt
+pip -q install -r requirements.txt
 
 echo -e ${ACTION} "Checking if .env exists..."
 if [ ! -e .env ]
